@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<robot name="car">
+  
+  <link name="base_chassis_link">
+    <visual>
+      <geometry>
+        <box size=".40 0.16 .07"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+       <box size=".40 0.16 .07"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.2"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <link name="front">
+    <visual>
+      <geometry>
+        <box size=".20 0.1 .05"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size=".20 0.1 .05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.2"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  <joint name="motor_front" type="fixed">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="front"/>
+    <origin rpy="0 0 0" xyz="0.3 0 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <!--
+  
+  <link name="wheel_front_right">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="motor_front_right_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="wheel_front_right"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 -0.125 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  
+  
+  <link name="wheel_front_left">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="motor_front_left_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="wheel_front_left"/>
+    <origin rpy="1.57075 0 0" xyz="0.21 0.125 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  -->
+  
+  <link name="wheel_back_right">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.40"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="motor_back_right_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="wheel_back_right"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 -0.175 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="wheel_back_left">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.40"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="motor_back_left_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="base_chassis_link"/>
+    <child link="wheel_back_left"/>
+    <origin rpy="1.57075 0 0" xyz="-0.21 0.175 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  
+  <link name="turn_rod_right">
+    <visual>
+      <geometry>
+        <box size=".05 0.05 .05"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	  
+        <box size=".05 0.05 .05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.2"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+ 
+  <joint name="motor_turn_rod_right_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="front"/>
+    <child link="turn_rod_right"/>
+    <origin rpy="0 0 0" xyz="0.075 -0.15 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="turn_wheel_right">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="turn_wheel_right_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="turn_rod_right"/>
+    <child link="turn_wheel_right"/>
+    <origin rpy="1.57075 0 0" xyz="0 -0.013 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <link name="turn_rod_left">
+    <visual>
+      <geometry>
+        <box size=".05 0.05 .05"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+	  
+        <box size=".05 0.05 .05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="3.2"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+ 
+  <joint name="motor_turn_rod_left_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="front"/>
+    <child link="turn_rod_left"/>
+    <origin rpy="0 0 0" xyz="0.075 0.15 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  
+	<link name="turn_wheel_left">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+  
+  <joint name="turn_wheel_left_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="turn_rod_left"/>
+    <child link="turn_wheel_left"/>
+    <origin rpy="1.57075 0 0" xyz="0 0.013 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+  
+  <!--
+  <link name="turn_wheel_right">
+    <visual>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.026" radius="0.052"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  
+ 
+  <joint name="motor_turn_wheel_right_joint" type="continuous">
+    <axis xyz="0 0 1"/>
+    <parent link="front"/>
+    <child link="turn_wheel_right"/>
+    <origin rpy="1.57075 0 0" xyz="0.15 -0.125 0"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  -->
+  
+  
+  
+
+
+</robot>
