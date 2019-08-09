@@ -4,7 +4,7 @@
   <link name="waist">
     <visual>
       <geometry>
-        <box size="0.16 0.60 .1"/>
+        <box size="0.16 0.60 .07"/>
       </geometry>
       <material name="red">
         <color rgba="1 0 0 1"/>
@@ -12,7 +12,7 @@
     </visual>
     <collision>
       <geometry>
-        <box size="0.16 0.60 .1"/>
+        <box size="0.16 0.60 .07"/>
       </geometry>
     </collision>
     <inertial>
@@ -20,45 +20,6 @@
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
     </inertial>
   </link>
-
-
-
-
-
- <link name="left_thigh_sphere">
-    <visual>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-      <material name="yellow">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="3.2"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-    </inertial>
-  </link>
-
-
-  <joint name="left_groin_sphere" type="revolute">
-    <axis xyz="0 1 0"/>
-    <parent link="waist"/>
-    <child link="left_thigh_sphere"/>
-    <origin rpy="0 0 0" xyz="0 -0.375 0"/>
-    <limit effort="100" lower="1.57" upper="1.57" velocity="100"/>
-    <joint_properties damping="0.0" friction="0.0"/>
-  </joint>
-
-
-
-
-
 
 
 
@@ -83,46 +44,13 @@
   </link>
 
 
-  <joint name="left_groin_joint" type="fixed">
-    <axis xyz="0 1 0"/>
-    <parent link="left_thigh_sphere"/>
-    <child link="left_thigh"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.30"/>
-    <limit effort="100" velocity="100"/>
-    <joint_properties damping="0.0" friction="0.0"/>
-  </joint>
-
-
-
-
-  <link name="right_thigh_sphere">
-    <visual>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-      <material name="yellow">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="3.2"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-    </inertial>
-  </link>
-
-
-  <joint name="right_groin_sphere" type="revolute">
+  <joint name="left_groin" type="continuous">
     <axis xyz="0 1 0"/>
     <parent link="waist"/>
-    <child link="right_thigh_sphere"/>
-    <origin rpy="0 0 0" xyz="0 0.375 0"/>
+    <child link="left_thigh"/>
+    <origin rpy="0 0 0" xyz="0 -0.22 -0.35"/>
     <limit effort="100" velocity="100"/>
-    <joint_properties damping="0.0" lower="1.57" upper="1.57" friction="0.0"/>
+    <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
 
@@ -148,43 +76,11 @@
   </link>
 
 
-  <joint name="right_groin_joint" type="fixed">
+  <joint name="right_groin" type="continuous">
     <axis xyz="0 1 0"/>
-    <parent link="right_thigh_sphere"/>
+    <parent link="waist"/>
     <child link="right_thigh"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.30"/>
-    <limit effort="100" velocity="100"/>
-    <joint_properties damping="0.0" friction="0.0"/>
-  </joint>
-
-
-
-  <link name="left_leg_cube">
-    <visual>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-      <material name="yellow">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="3.2"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-    </inertial>
-  </link>
-
-
-  <joint name="left_leg_cube_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <parent link="left_thigh"/>
-    <child link="left_leg_cube"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+    <origin rpy="0 0 0" xyz="0 0.22 -0.35"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
@@ -196,8 +92,8 @@
       <geometry>
         <box size="0.16 0.15 0.50"/>
       </geometry>
-      <material name="blue">
-        <color rgba="0 0 1 1"/>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
       </material>
     </visual>
     <collision>
@@ -212,49 +108,15 @@
   </link>
 
 
-  <joint name="left_knee_joint" type="fixed">
+  <joint name="left_knee" type="continuous">
     <axis xyz="0 1 0"/>
-    <parent link="left_leg_cube"/>
+    <parent link="left_thigh"/>
     <child link="left_leg"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.30"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.565"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
-
-
-
-
-
-  <link name="right_leg_cube">
-    <visual>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-      <material name="yellow">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.15 0.15 0.1"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="3.2"/>
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
-    </inertial>
-  </link>
-
-
-  <joint name="right_leg_cube_joint" type="continuous">
-    <axis xyz="0 1 0"/>
-    <parent link="right_thigh"/>
-    <child link="right_leg_cube"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.3"/>
-    <limit effort="100" velocity="100"/>
-    <joint_properties damping="0.0" friction="0.0"/>
-  </joint>
 
 
   <link name="right_leg">
@@ -262,8 +124,8 @@
       <geometry>
         <box size="0.16 0.15 0.50"/>
       </geometry>
-      <material name="blue">
-        <color rgba="0 0 1 1"/>
+      <material name="yellow">
+        <color rgba="1 1 0 1"/>
       </material>
     </visual>
     <collision>
@@ -278,11 +140,11 @@
   </link>
 
 
-  <joint name="right_knee_joint" type="fixed">
+  <joint name="right_knee" type="continuous">
     <axis xyz="0 1 0"/>
-    <parent link="right_leg_cube"/>
+    <parent link="right_thigh"/>
     <child link="right_leg"/>
-    <origin rpy="0 0 0" xyz="0 0 -0.3"/>
+    <origin rpy="0 0 0" xyz="0 0 -0.565"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>

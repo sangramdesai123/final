@@ -11,6 +11,14 @@ cheetahStartPos = [0,0,1]
 cheetahStartOrientation = p.getQuaternionFromEuler([0,0,0])
 cheetahId = p.loadURDF("cheetah.urdf", cheetahStartPos, cheetahStartOrientation)
 
+cheetahStartPos = [0,-2,1]
+cheetahStartOrientation = p.getQuaternionFromEuler([0,0,0])
+spiderid = p.loadURDF("spider.urdf", cheetahStartPos, cheetahStartOrientation)
+cheetahStartPos = [0,2,3]
+cheetahStartOrientation = p.getQuaternionFromEuler([0,0,0])
+spiderid = p.loadURDF("bipedal.urdf", cheetahStartPos, cheetahStartOrientation)
+
+
 #Orignal fps = 1/100
 fps = 1/100
 
