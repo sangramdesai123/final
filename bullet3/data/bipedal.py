@@ -26,7 +26,7 @@ steeringSlider = p.addUserDebugParameter("steering", -0.5, 0.5, 0)
 angle=0
 for i in range (1000000):
     angle+=0.01
-    p.setJointMotorControl2(bipedalId, 0, p.POSITION_CONTROL, targetPosition=angle)
+    #p.setJointMotorControl2(bipedalId, 0, p.POSITION_CONTROL, targetPosition=angle)
     #p.setJointMotorControl2(bipedalId, 3, p.POSITION_CONTROL, targetPosition=0)
     p.stepSimulation()
     time.sleep(1./240.)
